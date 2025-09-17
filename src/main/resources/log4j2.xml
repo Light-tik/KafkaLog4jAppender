@@ -1,0 +1,15 @@
+<Configuration>
+    <Appenders>
+        <KafkaAppender name="Kafka" topic="logs" bootstrapServers="localhost:9092">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n"/>
+        </KafkaAppender>
+        <Async name="AsyncKafka">
+            <AppenderRef ref="Kafka"/>
+        </Async>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="AsyncKafka"/>
+        </Root>
+    </Loggers>
+</Configuration>
